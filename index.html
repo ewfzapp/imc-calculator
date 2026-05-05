@@ -3,90 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur d'IMC - Service Express</title>
-    
-    <!-- Script Google AdSense -->
+    <title>Calcul IMC - Service Express</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1805732481707409" crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #28a745; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .container { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        h1 { color: #333; margin-bottom: 1.5rem; }
-        .input-group { text-align: left; margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; color: #666; font-weight: bold; }
-        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
-        button { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; margin-top: 10px; }
-        #resultArea { margin-top: 20px; padding: 15px; border-radius: 8px; display: none; }
-        .imc-value { font-size: 2rem; font-weight: bold; display: block; }
-        .imc-status { font-size: 1.2rem; margin-top: 5px; }
+        body { margin:0; font-family:'Inter', sans-serif; background: radial-gradient(circle at top, #0f172a, #020617); color:white; display:flex; flex-direction: column; align-items:center; min-height:100vh; padding: 20px; }
+        .container { width:100%; max-width:420px; padding:30px; border-radius:24px; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); box-shadow: 0 0 50px rgba(99,102,241,0.25); text-align:center; margin-bottom: 30px; }
+        h1 { margin-bottom:10px; font-size: 1.8rem; }
+        .subtitle { color:#94a3b8; font-size:14px; margin-bottom:20px; }
+        label { display:block; margin-top:20px; font-size:14px; color:#cbd5e1; text-align:left; }
+        input { width:100%; padding:14px; margin-top:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); background:#0f172a; color:white; box-sizing: border-box; }
+        button { width:100%; padding:14px; margin-top:20px; border-radius:12px; border:none; background: linear-gradient(90deg,#6366f1,#8b5cf6); color:white; font-weight:600; cursor:pointer; transition:0.2s; }
+        button:hover { transform: scale(1.02); }
+        .result { margin-top:25px; padding: 15px; border-radius: 12px; background: rgba(99,102,241,0.1); display: none; }
+        .result span { display:block; font-size:24px; font-weight:700; color:#a78bfa; }
+        .seo-content { text-align: left; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .seo-content h2 { font-size: 1.1rem; color: #a78bfa; margin-top: 20px; }
+        .seo-content p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
+        footer { margin-top: auto; padding: 20px; font-size: 0.8rem; text-align: center; color: #64748b; }
+        footer a { color:#94a3b8; text-decoration: none; margin: 0 10px; }
+        .ad-slot { margin: 20px 0; min-height: 100px; }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <h1>Calcul d'IMC</h1>
-    
-    <div class="input-group">
-        <label>Taille (cm)</label>
-        <input type="number" id="height" placeholder="Ex: 175" required>
+    <h1>⚖️ Calcul d'IMC</h1>
+    <p class="subtitle">Suivez votre indice de masse corporelle</p>
+    <div class="ad-slot">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1805732481707409" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-    
-    <div class="input-group">
-        <label>Poids (kg)</label>
-        <input type="number" id="weight" placeholder="Ex: 70" required>
-    </div>
-
-    <button onclick="calculateIMC()">Calculer mon IMC</button>
-
-    <div id="resultArea">
-        <span class="imc-value" id="imcVal"></span>
-        <div class="imc-status" id="imcStatus"></div>
-    </div>
-
-    <!-- Zone AdSense -->
-    <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1805732481707409"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    <label>Taille (cm)</label>
+    <input type="number" id="h" placeholder="175">
+    <label>Poids (kg)</label>
+    <input type="number" id="w" placeholder="70">
+    <button onclick="calc()">Calculer l'IMC</button>
+    <div class="result" id="res"></div>
+    <div class="seo-content">
+        <h2>Qu'est-ce que l'IMC ?</h2>
+        <p>L'indice de masse corporelle est une mesure de la corpulence d'une personne, calculée selon la taille et le poids.</p>
     </div>
 </div>
-
 <script>
-    function calculateIMC() {
-        const h = document.getElementById('height').value / 100;
-        const w = document.getElementById('weight').value;
-        const resArea = document.getElementById('resultArea');
-        
-        if(h > 0 && w > 0) {
-            const imc = (w / (h * h)).toFixed(1);
-            document.getElementById('imcVal').innerText = imc;
-            
-            let status = "";
-            let color = "";
-            
-            if(imc < 18.5) { status = "Insuffisance pondérale"; color = "#ffc107"; }
-            else if(imc < 25) { status = "Poids normal"; color = "#28a745"; }
-            else if(imc < 30) { status = "Surpoids"; color = "#fd7e14"; }
-            else { status = "Obésité"; color = "#dc3545"; }
-            
-            const s = document.getElementById('imcStatus');
-            s.innerText = status;
-            resArea.style.display = "block";
-            resArea.style.backgroundColor = color + "22";
-            resArea.style.color = color;
+    function calc() {
+        const h = document.getElementById('h').value / 100;
+        const w = document.getElementById('w').value;
+        const res = document.getElementById('res');
+        if(h && w) {
+            const imc = (w / (h*h)).toFixed(1);
+            res.style.display = "block";
+            res.innerHTML = "Votre IMC : <span>" + imc + "</span>";
         }
     }
 </script>
-<footer style="margin-top: 50px; font-size: 0.8rem; text-align: center;">
-    <p>
-        <a href="about.html" style="color: #666; margin: 0 10px;">À propos</a> | 
-        <a href="privacy.html" style="color: #666; margin: 0 10px;">Confidentialité</a>
-    </p>
+<footer>
+    <p><a href="about.html">À propos</a> | <a href="privacy.html">Confidentialité</a></p>
     <p>&copy; 2026 Service Express</p>
 </footer>
 </body>
