@@ -1,106 +1,201 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcul IMC Précis - Service Express</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1805732481707409" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { margin:0; font-family:'Inter', sans-serif; background: radial-gradient(circle at top, #0f172a, #020617); color:white; display:flex; flex-direction: column; align-items:center; min-height:100vh; padding: 20px; }
-        .container { width:100%; max-width:420px; padding:30px; border-radius:24px; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); box-shadow: 0 0 50px rgba(99,102,241,0.25); text-align:center; margin-bottom: 30px; }
-        h1 { margin-bottom:10px; font-size: 1.8rem; }
-        .subtitle { color:#94a3b8; font-size:14px; margin-bottom:20px; }
-        label { display:block; margin-top:20px; font-size:14px; color:#cbd5e1; text-align:left; }
-        input { width:100%; padding:14px; margin-top:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); background:#0f172a; color:white; box-sizing: border-box; outline: none; font-size: 1rem; }
-        button { width:100%; padding:14px; margin-top:25px; border-radius:12px; border:none; background: linear-gradient(90deg,#6366f1,#8b5cf6); color:white; font-weight:600; cursor:pointer; transition:0.2s; }
-        button:hover { transform: scale(1.02); }
-        
-        .result { margin-top:25px; padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.05); display: none; border: 1px solid rgba(255,255,255,0.1); }
-        .result span { display:block; font-size:28px; font-weight:700; margin-bottom: 5px; }
-        #status { font-weight: 600; font-size: 1.1rem; }
-        
-        .ad-slot { margin: 20px 0; min-height: 100px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
-        .seo-content { text-align: left; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-        .seo-content h2 { font-size: 1.1rem; color: #a78bfa; margin-top: 20px; }
-        .seo-content p { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-        
-        footer { margin-top: auto; padding: 20px; font-size: 0.8rem; text-align: center; color: #64748b; }
-        footer a { color:#94a3b8; text-decoration: none; margin: 0 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur IMC Gratuit 2026 – Indice de Masse Corporelle | Service Express</title>
+  <meta name="description" content="Calculez votre IMC en quelques secondes. Résultat interprété selon les seuils OMS, courbe visuelle et conseils personnalisés. Gratuit, sans inscription.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://imc.service-express.org/">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1805732481707409" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#04050f;--surface:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.09);--purple:#a78bfa;--purple-dim:#818cf8;--accent:#7c3aed;--text:#e8eaf6;--muted:#7c85a8;--green:#34d399;--amber:#fbbf24;--red:#f87171;--blue:#60a5fa;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:0 16px 60px;}
+    body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 55% 45% at 20% 20%,rgba(99,60,180,.15) 0%,transparent 70%),radial-gradient(ellipse 45% 55% at 80% 80%,rgba(30,200,150,.08) 0%,transparent 70%);pointer-events:none;}
+    .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0 24px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+    .nav-brand{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--purple);text-decoration:none;}
+    .nav-back{font-size:13px;color:var(--muted);text-decoration:none;}
+    .nav-back:hover{color:var(--purple);}
+
+    .hero{text-align:center;margin-bottom:32px;}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(26px,5vw,40px);font-weight:800;margin-bottom:8px;}
+    .hero h1 span{color:var(--purple);}
+    .hero p{font-size:15px;color:var(--muted);}
+
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px;}
+
+    .field{margin-bottom:20px;}
+    .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:500;}
+    .slider-row{display:flex;align-items:center;gap:16px;}
+    .slider-row input[type=range]{flex:1;height:6px;accent-color:var(--purple);}
+    .slider-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--purple);min-width:70px;text-align:right;}
+
+    .btn-calc{width:100%;padding:15px;font-size:16px;font-weight:700;background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border:none;border-radius:14px;cursor:pointer;transition:opacity .2s,transform .15s;margin-top:4px;}
+    .btn-calc:hover{opacity:.88;transform:translateY(-1px);}
+
+    /* RÉSULTAT */
+    #result{display:none;}
+    .result-hero{text-align:center;padding:32px 20px;background:var(--surface);border:1px solid var(--border);border-radius:20px;margin-bottom:20px;}
+    .imc-val{font-family:'Syne',sans-serif;font-size:clamp(56px,12vw,80px);font-weight:800;line-height:1;}
+    .imc-label{font-size:20px;font-weight:700;margin-top:8px;}
+    .imc-advice{font-size:14px;color:var(--muted);margin-top:8px;max-width:400px;margin-left:auto;margin-right:auto;}
+
+    /* JAUGE IMC */
+    .gauge-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;}
+    .gauge-track{position:relative;height:14px;border-radius:8px;overflow:hidden;margin-bottom:10px;
+      background:linear-gradient(90deg,#3b82f6 0%,#34d399 30%,#fbbf24 60%,#f87171 80%,#ef4444 100%);}
+    .gauge-cursor{position:absolute;top:-4px;width:4px;height:22px;background:#fff;border-radius:2px;box-shadow:0 0 6px rgba(0,0,0,.5);transition:left .5s ease;}
+    .gauge-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
+
+    /* ZONES */
+    .zones-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
+    @media(max-width:420px){.zones-grid{grid-template-columns:1fr;}}
+    .zone-pill{padding:12px 16px;border-radius:12px;border:1px solid;font-size:13px;}
+    .zone-pill .zval{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;}
+    .zone-pill.active{border-width:2px;}
+
+    /* SEO */
+    .seo{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-top:8px;}
+    .seo h2{font-family:'Syne',sans-serif;font-size:18px;color:var(--purple);margin-bottom:12px;}
+    .seo h3{font-size:15px;color:var(--text);margin:20px 0 8px;}
+    .seo p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:10px;}
+    .seo ul{padding-left:18px;color:var(--muted);font-size:14px;line-height:2.1;}
+
+    footer{text-align:center;margin-top:48px;font-size:12px;color:var(--muted);}
+    footer a{color:var(--purple-dim);text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>⚖️ Calcul IMC</h1>
-    <p class="subtitle">Interprétez votre résultat instantanément</p>
+<div class="wrap">
+  <nav>
+    <a class="nav-brand" href="https://service-express.org">⚡ Service Express</a>
+    <a class="nav-back" href="https://service-express.org">← Retour au portail</a>
+  </nav>
 
-    <div class="ad-slot">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1805732481707409" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <div class="hero">
+    <h1>⚖️ Calculateur <span>IMC</span></h1>
+    <p>Indice de Masse Corporelle — interprété selon les seuils OMS</p>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label>Taille : <span id="lbl-taille">170 cm</span></label>
+      <div class="slider-row">
+        <input type="range" id="taille" min="130" max="220" value="170" oninput="updateLabel('taille','lbl-taille','cm')">
+        <div class="slider-val" id="sv-taille">170 <small style="font-size:14px;color:var(--muted)">cm</small></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Poids : <span id="lbl-poids">70 kg</span></label>
+      <div class="slider-row">
+        <input type="range" id="poids" min="30" max="200" value="70" oninput="updateLabel('poids','lbl-poids','kg')">
+        <div class="slider-val" id="sv-poids">70 <small style="font-size:14px;color:var(--muted)">kg</small></div>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calculer()">Calculer mon IMC →</button>
+  </div>
+
+  <div id="result">
+    <div class="result-hero">
+      <div class="imc-val" id="r-val" style="color:var(--green)">–</div>
+      <div class="imc-label" id="r-label">–</div>
+      <div class="imc-advice" id="r-advice">–</div>
     </div>
 
-    <label>Taille (cm)</label>
-    <input type="number" id="h" placeholder="Ex: 175">
-    <label>Poids (kg)</label>
-    <input type="number" id="w" placeholder="Ex: 72">
-    
-    <button onclick="calc()">Calculer et Interpréter</button>
-    
-    <div class="result" id="res">
-        <span id="score">0.0</span>
-        <div id="status">---</div>
+    <div class="gauge-card">
+      <div class="gauge-track">
+        <div class="gauge-cursor" id="gauge-cur" style="left:0%"></div>
+      </div>
+      <div class="gauge-labels">
+        <span>Maigreur &lt;18.5</span>
+        <span>Normal 18.5–25</span>
+        <span>Surpoids 25–30</span>
+        <span>Obésité &gt;30</span>
+      </div>
     </div>
 
-    <div class="seo-content">
-        <h2>Comment interpréter votre IMC ?</h2>
-        <p>L'Indice de Masse Corporelle (IMC) permet d'évaluer les risques pour la santé liés au poids. Voici les seuils de l'OMS :</p>
-        <p>• Moins de 18.5 : Insuffisance pondérale<br>
-           • 18.5 à 25 : Corpulence normale<br>
-           • 25 à 30 : Surpoids<br>
-           • Plus de 30 : Obésité</p>
-    </div>
+    <div class="zones-grid" id="zones-grid"></div>
+  </div>
+
+  <div class="seo">
+    <h2>Qu'est-ce que l'IMC ?</h2>
+    <p>L'Indice de Masse Corporelle (IMC), ou Body Mass Index (BMI) en anglais, est un indicateur simple calculé en divisant le poids (en kg) par le carré de la taille (en mètres). Il permet d'évaluer si une personne présente un risque de santé lié à son poids.</p>
+    <p><strong>Formule :</strong> IMC = Poids (kg) ÷ Taille² (m)</p>
+
+    <h3>Seuils OMS 2024</h3>
+    <ul>
+      <li>Moins de 16,5 : Dénutrition sévère</li>
+      <li>16,5 à 18,5 : Insuffisance pondérale (maigreur)</li>
+      <li>18,5 à 25 : Corpulence normale</li>
+      <li>25 à 30 : Surpoids</li>
+      <li>30 à 35 : Obésité modérée (classe I)</li>
+      <li>35 à 40 : Obésité sévère (classe II)</li>
+      <li>Plus de 40 : Obésité morbide (classe III)</li>
+    </ul>
+
+    <h3>Limites de l'IMC</h3>
+    <p>L'IMC ne distingue pas la masse musculaire de la masse graisseuse. Un sportif de haut niveau peut afficher un IMC élevé tout en étant en excellente santé. De même, l'IMC ne tient pas compte de la répartition des graisses (abdominale vs périphérique). Il doit être interprété conjointement avec le tour de taille et d'autres indicateurs médicaux.</p>
+
+    <h3>IMC chez l'enfant et l'adolescent</h3>
+    <p>Chez les moins de 18 ans, l'IMC s'interprète différemment à l'aide de courbes de corpulence adaptées à l'âge et au sexe (courbes IOTF ou références françaises). Notre calculateur est conçu pour les adultes uniquement.</p>
+  </div>
+
+  <footer>
+    <p>© 2026 Service Express &nbsp;·&nbsp; <a href="https://imc.service-express.org/privacy.html">Confidentialité</a></p>
+  </footer>
 </div>
-
 <script>
-    function calc() {
-        const heightCm = document.getElementById('h').value;
-        const weight = document.getElementById('w').value;
-        const resDiv = document.getElementById('res');
-        const scoreDisp = document.getElementById('score');
-        const statusDisp = document.getElementById('status');
+const ZONES = [
+  {label:'Dénutrition',range:'< 16.5',color:'#60a5fa',min:0,max:16.5,advice:'Un suivi médical est recommandé.'},
+  {label:'Maigreur',range:'16.5 – 18.5',color:'#818cf8',min:16.5,max:18.5,advice:'Consultez un professionnel de santé.'},
+  {label:'Corpulence normale',range:'18.5 – 25',color:'#34d399',min:18.5,max:25,advice:'Bravo ! Continuez vos bonnes habitudes.'},
+  {label:'Surpoids',range:'25 – 30',color:'#fbbf24',min:25,max:30,advice:'Une activité physique régulière est conseillée.'},
+  {label:'Obésité modérée',range:'30 – 35',color:'#f97316',min:30,max:35,advice:'Consultez votre médecin traitant.'},
+  {label:'Obésité sévère',range:'35 – 40',color:'#f87171',min:35,max:40,advice:'Un suivi médical spécialisé est recommandé.'},
+  {label:'Obésité morbide',range:'> 40',color:'#ef4444',min:40,max:999,advice:'Prise en charge médicale urgente conseillée.'},
+];
 
-        if(heightCm && weight) {
-            const heightM = heightCm / 100;
-            const imc = (weight / (heightM * heightM)).toFixed(1);
-            
-            resDiv.style.display = "block";
-            scoreDisp.innerText = imc;
+function updateLabel(id, lblId, unit) {
+  const v = document.getElementById(id).value;
+  document.getElementById('sv-'+id.replace('taille','taille').replace('poids','poids')).innerHTML =
+    `${v} <small style="font-size:14px;color:var(--muted)">${unit}</small>`;
+}
 
-            let message = "";
-            let color = "";
+function calculer() {
+  const t = parseFloat(document.getElementById('taille').value) / 100;
+  const p = parseFloat(document.getElementById('poids').value);
+  const imc = p / (t * t);
+  const zone = ZONES.find(z => imc >= z.min && imc < z.max) || ZONES[ZONES.length-1];
 
-            if (imc < 18.5) {
-                message = "Insuffisance pondérale";
-                color = "#60a5fa"; // Bleu
-            } else if (imc < 25) {
-                message = "Corpulence normale";
-                color = "#34d399"; // Vert
-            } else if (imc < 30) {
-                message = "Surpoids";
-                color = "#fbbf24"; // Orange
-            } else {
-                message = "Obésité";
-                color = "#f87171"; // Rouge
-            }
+  document.getElementById('r-val').textContent = imc.toFixed(1);
+  document.getElementById('r-val').style.color = zone.color;
+  document.getElementById('r-label').textContent = zone.label;
+  document.getElementById('r-label').style.color = zone.color;
+  document.getElementById('r-advice').textContent = zone.advice;
 
-            statusDisp.innerText = message;
-            scoreDisp.style.color = color;
-        }
-    }
+  // Jauge : IMC 14 → 45 mappé 0 → 100%
+  const pct = Math.max(0, Math.min(100, ((imc - 14) / (45 - 14)) * 100));
+  document.getElementById('gauge-cur').style.left = pct + '%';
+
+  // Zones grid
+  const grid = document.getElementById('zones-grid');
+  grid.innerHTML = ZONES.map(z => {
+    const active = imc >= z.min && imc < z.max;
+    return `<div class="zone-pill${active?' active':''}" style="background:${active?z.color+'22':'rgba(255,255,255,.03)'};border-color:${active?z.color:'rgba(255,255,255,.09)'}">
+      <div class="zval" style="color:${z.color}">${z.range}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:3px">${z.label}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
 </script>
-<footer>
-    <p><a href="about.html">À propos</a> | <a href="privacy.html">Confidentialité</a></p>
-    <p>&copy; 2026 Service Express</p>
-</footer>
 </body>
 </html>
