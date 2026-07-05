@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imc-calculator.service-express.org/sitemap.xml
